@@ -4,6 +4,8 @@ https://codeleeks.pythonanywhere.com/
 
 <hr />
 
+![image](https://github.com/user-attachments/assets/d74146ff-5706-43ca-99ea-164e2eeb1d96)
+
 코인 듀얼모멘텀 전략에 따라 도출된 종목을 보여줍니다.
 
 코인 듀얼모멘텀 전략은 비트코인이 120일 이평선 위에 있을 때, 시가총액 TOP20 코인 중 7일 상승률 TOP 3 코인에 투자하는 전략입니다.

@@ -1,0 +1,99 @@
+html {
+  font-family: 'Inter', sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+
+  color: #fff;
+  line-height: 1.4;
+
+  --app-width: 1200px;
+  @media (max-width: 1200px) {
+    --app-width: 800px;
+  }
+  @media (max-width: 800px) {
+    --app-width: 400px;
+  }
+  @media (max-width: 400px) {
+    --app-width: 100vw;
+  }
+}
+body {
+  background-color: #0d1421;
+}
+* {
+  box-sizing: border-box;
+}
+
+.inner {
+  max-width: 90%;
+  margin: 0 auto;
+}
+
+.header {
+  border-bottom: 1px solid #323546;
+  min-height: 120px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &__title {
+    font-size: 32px;
+    text-align: center;
+  }
+}
+.main {
+  max-width: calc(var(--app-width) * 0.9);
+  margin: 0 auto;
+}
+.conditions {
+  margin-top: 10px;
+  &__title {
+    font-size: 18px;
+    font-weight: 700;
+    padding-bottom: 5px;
+  }
+  &__item {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+
+    margin: 0 auto;
+    $font-size: 18px;
+    height: $font-size * 2;
+    line-height: 1;
+
+    &__condition {
+      font-size: $font-size;
+    }
+    &__condition-result {
+      font-size: $font-size;
+      &.passed {
+        color: #16c784;
+      }
+      &.failed {
+        color: #ea3943;
+      }
+    }
+  }
+}
+.coins {
+  margin-top: 30px;
+  &__title {
+    font-size: 18px;
+    font-weight: 700;
+    padding-bottom: 5px;
+  }
+  &__table {
+    width: 100%;
+
+    th,
+    td {
+      text-align: start;
+      padding: 10px 0;
+    }
+    tr {
+      border-bottom: 1px solid #323546;
+    }
+  }
+}

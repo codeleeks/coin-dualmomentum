@@ -1,0 +1,5 @@
+.env
+.venv
+cache.json
+src/static/dist
+src/static/.webassets-cache

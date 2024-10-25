@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    {% assets "asset_css" %}
+    <link rel="stylesheet" type="text/css" href="{{ ASSET_URL }}" />
+    {% endassets %}
+    <link rel="icon" type="image/x-icon" href="/static/images/favicon.png" />
+    <!-- reset css -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/reset-css@5.0.2/reset.min.css"
+    />
+    <!-- font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Icons -->
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+
+    <title>Alternative Coin Dual Momentum</title>
+  </head>
+  <body>
+    <header class="header">
+      <h1 class="header__title">Alternative Coin Dual Momentum Strategy</h1>
+    </header>
+    <main class="main">
+      <ul class="conditions">
+        <h2 class="conditions__title">Conditions</h2>
+        <li class="conditions__item">
+          <h3 class="conditions__item__condition">
+            Is BTC price higher than 120SMA?
+          </h3>
+          <span
+            class="conditions__item__condition-result material-icons {{ 'passed' if btcOver120SMA else 'failed'}}"
+          >
+            {% if btcOver120SMA %} check_circle {% else %} cancel {% endif %}
+          </span>
+        </li>
+      </ul>
+      <div class="coins">
+        <h2 class="coins__title">Coins</h2>
+        {% if canInvest %}
+        <table class="coins__table">
+          <thead>
+            <tr>
+              <th>Symbol</th>
+              <th>7d %</th>
+              <th>Volume 24h</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for coin in coins %}
+            <tr>
+              <td>{{ coin['symbol'] }}</td>
+              <td>{{ coin['7d_%'] | round(2, 'common') }}</td>
+              <td>{{ coin['volume_24h'] | usd }}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+        {% else %}
+        <p class="coins__notice">
+          Conditions haven't been satisfied. Run away!
+        </p>
+        {% endif %}
+      </div>
+    </main>
+  </body>
+</html>

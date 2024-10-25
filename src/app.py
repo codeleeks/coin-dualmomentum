@@ -9,10 +9,12 @@ import os
 from flask_assets import Environment, Bundle
 from babel.numbers import format_currency
 
-load_dotenv()
+project_folder = os.path.expanduser('~/coin-dualmomentum')  # adjust as appropriate
+load_dotenv(os.path.join(project_folder, '.env'))
+#load_dotenv()
 
 def is_btc_over_120sma():
-  client = Spot()
+  client = Spot(base_url=os.getenv('BINANCE_BASE_URL'))
   candles = client.klines(symbol="BTCUSDT", interval="1d", limit=120)
   candles = np.array(candles)[:, 4].astype(np.float64)
 
